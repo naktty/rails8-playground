@@ -6,8 +6,8 @@ FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim
 WORKDIR /rails
 
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git curl sqlite3 libyaml-dev && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get install -y build-essential git curl libyaml-dev default-libmysqlclient-dev vim && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
