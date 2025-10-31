@@ -8,8 +8,13 @@ default: &default
   port: 3306
 
 development:
-  <<: *default
-  database: myapp_development
+  primary:
+    <<: *default
+    database: myapp_development
+  queue:
+    <<: *default
+    database: myapp_development_queue
+    migrations_paths: db/queue_migrate
 
 test:
   <<: *default
